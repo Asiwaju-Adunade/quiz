@@ -2,21 +2,20 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #333333;
+  --quiz-yellow: #FCC822;
+  --quiz-light-gray: #E0E0E0;
+  --quiz-dark-gray: #828282;
+  --miniground: #F3F3F3;
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-miniground: var(--miniground);
+  --color-quiz-yellow: var(--quiz-yellow);
+  --color-quiz-light-gray: var(--quiz-light-gray);
+  --color-quiz-dark-gray: var(--quiz-dark-gray);
 }
 
 body {
