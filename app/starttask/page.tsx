@@ -19,7 +19,7 @@ const ALL_TOPICS = [
   "Agricultural Science",
   "Health Education",
   "Home Economics",
-  "Civic Education",
+  "Current Affairs",
 ];
 
 interface PageProps {
@@ -43,13 +43,6 @@ export default function Page({ onClose }: PageProps) {
 
   return (
     <div className="relative px-10 mx-auto">
-      {/* Page Close Button */}
-      <button
-        onClick={() => onClose ? onClose() : router.back()}
-        className="absolute top-6 right-6 p-3 cursor-pointer"
-      >
-        <X className="w-8 h-8 text-quiz-dark-gray" />
-      </button>
 
       <div className="mt-8">
         <h1 className="font-bold text-5xl text-center mb-5 ">
@@ -60,7 +53,7 @@ export default function Page({ onClose }: PageProps) {
           selected)
         </p>
 
-        <div className="grid grid-cols-3 md:grid-cols-5 gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-5">
           {ALL_TOPICS.map((topic) => {
             const isSelected = selectedTopics.includes(topic);
 
@@ -92,7 +85,7 @@ export default function Page({ onClose }: PageProps) {
                       e.stopPropagation();
                       toggleTopic(topic);
                     }}
-                    className="w-[20%] min-w-[40px] flex flex-col items-center justify-center bg-black cursor-pointer"
+                    className="w-[20%] flex flex-col items-center justify-center bg-black cursor-pointer"
                     aria-label={`Remove ${topic}`}
                     title="Remove topic"
                   >

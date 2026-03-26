@@ -1,4 +1,3 @@
-
 "use client";
 import { useState } from "react";
 import Button from "./button";
@@ -24,83 +23,86 @@ export default function Navbar() {
     // parent div
     <nav className="border-b border-quiz-light-gray mx-auto max-w-6xl">
       <div className="flex items-center justify-between  px-5 py-3">
-
         {/* Logo part */}
-        <Image
-          src="/svgs/logo.png"
-          alt="logo"
-          width={150}
-          height={50}
-        />
+        <Image src="/svgs/logo.svg" alt="logo" width={150} height={50} />
 
         {/* Hamburger Menu (Mobile Only) */}
-        <button
-          className="md:hidden text-3xl"
-          onClick={() => setOpen(!open)}
-        >
+        <button className="md:hidden text-3xl" onClick={() => setOpen(!open)}>
           ☰
         </button>
 
         {/* Desktop view */}
         <div className="hidden md:flex gap-10 items-center cursor-pointer">
-          <Link href="/how-it-works" className="hover:text-quiz-light-gray transition duration-200">
-             How it works?
+          <Link
+            href="/how-it-works"
+            className="hover:text-quiz-light-gray transition duration-200"
+          >
+            How it works?
           </Link>
-          <Link href="/" className="hover:text-quiz-light-gray transition duration-200">
-             Features
+          <Link
+            href="/"
+            className="hover:text-quiz-light-gray transition duration-200"
+          >
+            Features
           </Link>
-          <Link href="/" className="hover:text-quiz-light-gray transition duration-200">
-             About us
+          <Link
+            href="/"
+            className="hover:text-quiz-light-gray transition duration-200"
+          >
+            About us
           </Link>
           {user ? (
-              <Button 
-                variant="secondary" 
-                label="Logout"
-                onClick={handleSignOut}
-              />
+            <Button
+              variant="secondary"
+              label="Logout"
+              onClick={handleSignOut}
+            />
           ) : (
             <Link href="/login">
-              <Button 
-                 variant="secondary" 
-                 label="Login" 
-              />
+              <Button variant="secondary" label="Login" />
             </Link>
           )}
         </div>
-     </div>
+      </div>
 
-        {/* Mobile view */}
+      {/* Mobile view */}
       {open && (
         <div className="flex flex-col gap-10 px-5 pb-5 mt-2 md:hidden">
-            <Link href="/how-it-works" className="hover:text-quiz-light-gray transition duration-200">
-               How it works
-            </Link>
+          <Link
+            href="/how-it-works"
+            className="hover:text-quiz-light-gray transition duration-200"
+          >
+            How it works
+          </Link>
 
-            <Link href="/" className="hover:text-quiz-light-gray transition duration-200">
-               Features
-            </Link>
+          <Link
+            href="/"
+            className="hover:text-quiz-light-gray transition duration-200"
+          >
+            Features
+          </Link>
 
-            <Link href="/" className="hover:text-quiz-light-gray transition duration-200">
-               About us
-            </Link>
+          <Link
+            href="/"
+            className="hover:text-quiz-light-gray transition duration-200"
+          >
+            About us
+          </Link>
 
-            {/* button part*/}
+          {/* button part*/}
           <div>
             {user ? (
-                <Button 
-                  variant="secondary" 
-                  label="Logout"
-                  onClick={handleSignOut}
-                />
+              <Button
+                variant="secondary"
+                label="Logout"
+                onClick={handleSignOut}
+              />
             ) : (
               <Link href="/login">
-                <Button 
-                   variant="secondary" 
-                   label="Login" 
-                />
+                <Button variant="secondary" label="Login" />
               </Link>
             )}
-         </div>
+          </div>
         </div>
       )}
     </nav>

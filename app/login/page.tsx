@@ -73,12 +73,12 @@ export default function Page() {
     <div className="min-h-screen w-full mx-auto md:grid grid-cols-2">
 
       {/* text child div */}
-      <div className="p-15 flex flex-col gap-10">
+      <div className="p-7 flex flex-col gap-10">
 
         {/* logo */}
         <div className="mx-auto">
           <Image
-            src="/svgs/logo.png"
+            src="/svgs/logo.svg"
             alt="logo"
             width={350}
             height={100}
@@ -105,7 +105,7 @@ export default function Page() {
 
           {/* NAME (Signup only) */}
           {isSignupMode && (
-            <div className="mb-4">
+            <div className="mb-6">
               <Input
                 type="text"
                 value={name}
@@ -172,7 +172,7 @@ export default function Page() {
           </div>
 
           {/* remember + forgot */}
-          <div className="flex items-end justify-between gap-8 mt-4 text-quiz-dark-gray">
+          <div className="flex items-end justify-between gap-8 mt-5 text-quiz-dark-gray">
 
             <div className="flex gap-2">
               <input type="checkbox" />
@@ -194,10 +194,10 @@ export default function Page() {
           )}
 
           {/* buttons */}
-          <div className="flex gap-12 mt-6">
+          <div className="flex gap-12 mt-10">
 
-            <Button type="submit" variant="primary">
-              {isLoading ? "Loading..." : isSignupMode ? "Sign Up" : "Login"}
+            <Button type="submit" variant="primary" isLoading={isLoading}>
+              {isSignupMode ? "Sign Up" : "Login"}
             </Button>
 
             <Button 
@@ -207,8 +207,9 @@ export default function Page() {
                 setIsSignupMode(!isSignupMode);
                 setErrors({});
               }}
+              disabled={isLoading}
             >
-              {isSignupMode ? "Switch to Login" : "Sign Up"}
+              {isSignupMode ? "Login" : "Sign Up"}
             </Button>
 
           </div>
@@ -217,7 +218,7 @@ export default function Page() {
       </div>
 
       {/* image child div */}
-      <div className="flex items-center justify-center p-15 w-full bg-miniground">
+      <div className="items-center justify-center p-15 hidden md:grid w-full bg-miniground">
 
         <Image
           src="/svgs/Graduationcap.svg"

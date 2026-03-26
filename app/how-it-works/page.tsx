@@ -3,7 +3,7 @@ export default function Page() {
     return (
     <>
     <Navbar />
-        <div className=" ml-10 p-10 space-y-3">
+        <div className=" ml-10 max-w-5xl p-10 space-y-5">
             <h1 className="font-bold text-3xl mt-5 text-center text-quiz-yellow">How it works</h1>
             <h1 className="text-quiz-dark-gray text-center text-xl">Learn how our quiz platform works</h1>
             <h1 className=" text-lg"> You click on the start sloving button or the login button to login or signup.</h1>
