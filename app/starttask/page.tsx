@@ -34,14 +34,15 @@ export default function Page({ onClose }: PageProps) {
 
   const toggleTopic = (topic: string) => {
     if (selectedTopics.includes(topic)) {
-      setSelectedTopics(selectedTopics.filter((t) => t !== topic));
+      // setSelectedTopics(selectedTopics.filter((t) => t !== topic));
+       setSelectedTopics(prev => prev.includes(topic) ? prev.filter(t => t !== topic) : [...prev, topic])
     } else {
       setSelectedTopics([...selectedTopics, topic]);
     }
   };
 
   return (
-    <div className="relative px-15 mx-auto">
+    <div className="relative px-10 mx-auto">
       {/* Page Close Button */}
       <button
         onClick={() => onClose ? onClose() : router.back()}
@@ -59,7 +60,7 @@ export default function Page({ onClose }: PageProps) {
           selected)
         </p>
 
-        <div className="grid grid-cols-3 md:grid-cols-5 gap-5 space-y-5">
+        <div className="grid grid-cols-3 md:grid-cols-5 gap-5">
           {ALL_TOPICS.map((topic) => {
             const isSelected = selectedTopics.includes(topic);
 
@@ -75,10 +76,10 @@ export default function Page({ onClose }: PageProps) {
               >
                 {/* Left Side (Topic Label) */}
                 <div
-                  className={`flex flex-col items-center justify-center py-[10px] px-[30px] ${isSelected ? "w-[80%]" : "w-full"}`}
+                  className={`flex flex-col items-center justify-center py-[10px] px-[25px] ${isSelected ? "w-[80%]" : "w-full"}`}
                 >
                   <span
-                    className={`font-semibold text-center text-lg ${isSelected ? "text-black" : "text-gray-800"}`}
+                    className={`font-semibold text-center text-lg ${isSelected ? "text-black" : "text-quiz-dark-gray"}`}
                   >
                     {topic}
                   </span>

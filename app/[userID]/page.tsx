@@ -51,7 +51,7 @@ export default function UserDashboard({
       <Navbar />
       <main className="mx-auto max-w-4xl p-10 mt-10">
         <h1 className="text-3xl font-bold mb-4">
-          Welcome, {user.displayName || user.email?.split("@")[0]}!
+          Welcome, {user.displayName || user.email?.split("@")[0]}
         </h1>
         <h1 className="text-quiz-dark-gray">
           This is your dashboard. Click on the choose subject button to choose
@@ -59,16 +59,19 @@ export default function UserDashboard({
         </h1>
 
         {/* Further content can go here */}
-        <div className="mt-8 p-6 bg-quiz-light-gray rounded-lg shadow-sm border md:flex justify-between border-gray-100">
+        <div className="mt-8 p-6 bg-quiz-light-gray rounded-lg shadow-sm md:flex justify-between">
           <div>
             <h2 className="text-xl font-semibold mb-2">Your Quizzes</h2>
             <p className="text-quiz-dark-gray mb-3 ">
-              You haven't choosen any subject or started any quizzes yet.
+              You haven't chosen any subject or started any quizzes yet.
             </p>
           </div>
           <div className="flex items-center">
-            <Button variant="primary" onClick={() => setShowStartTask(true)}>
-              Choose Subject
+            <Button 
+               variant="primary"
+               onClick={() => setShowStartTask(true)}
+            >
+               Choose Subject
             </Button>
           </div>
         </div>
