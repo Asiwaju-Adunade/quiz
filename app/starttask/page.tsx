@@ -34,7 +34,6 @@ export default function Page({ onClose }: PageProps) {
 
   const toggleTopic = (topic: string) => {
     if (selectedTopics.includes(topic)) {
-      // setSelectedTopics(selectedTopics.filter((t) => t !== topic));
        setSelectedTopics(prev => prev.includes(topic) ? prev.filter(t => t !== topic) : [...prev, topic])
     } else {
       setSelectedTopics([...selectedTopics, topic]);
@@ -89,6 +88,7 @@ export default function Page({ onClose }: PageProps) {
                     aria-label={`Remove ${topic}`}
                     title="Remove topic"
                   >
+                    {/* delete subject button */}
                     <X className="w-5 h-5 text-white" />
                   </div>
                 )}
@@ -99,9 +99,18 @@ export default function Page({ onClose }: PageProps) {
       </div>
 
       <div className="flex justify-end my-15">
+
+        {/* start quiz button  */}
         <Button
              variant="primary"
              label="Start Quiz"
+             disabled={selectedTopics.length < 5}
+             onClick={() => {
+              if (selectedTopics.length >= 5) {
+                localStorage.setItem("selectedTopics", JSON.stringify(selectedTopics));
+                router.push("/question");
+              }
+             }}
         />
       </div>
     </div>

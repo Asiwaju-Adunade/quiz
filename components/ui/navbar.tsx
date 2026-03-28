@@ -7,10 +7,12 @@ import { useAuth } from "@/context/auth-context";
 import { auth } from "@/lib/firebase";
 import { signOut } from "firebase/auth";
 
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const { user } = useAuth();
-
+  
+  
   const handleSignOut = async () => {
     try {
       await signOut(auth);
@@ -51,6 +53,7 @@ export default function Navbar() {
           >
             About us
           </Link>
+
           {user ? (
             <Button
               variant="secondary"
