@@ -6,6 +6,7 @@ interface ButtonProps {
   variant?: 'primary' | 'secondary';
   onClick?: () => void;
   className?: string;
+  style?: React.CSSProperties;
   children?: React.ReactNode;
   type?: "button" | "submit" | "reset";
   isLoading?: boolean;
@@ -17,6 +18,7 @@ export default function Button({
   variant = 'primary', 
   onClick, 
   className, 
+  style,
   children,
   type,
   isLoading,
@@ -37,6 +39,7 @@ export default function Button({
       type={type || "submit"}
       disabled={disabled || isLoading}
       className={`${baseStyles} ${variants[variant]} ${className || ''}`}
+      style={style}
     >
       {isLoading && <Loader2 className="w-5 h-5 animate-spin" />}
       {children || label}

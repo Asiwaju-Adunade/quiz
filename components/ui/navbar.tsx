@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Button from "./button";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,11 +12,12 @@ import { signOut } from "firebase/auth";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const { user } = useAuth();
-  
-  
+  const router = useRouter();
+
   const handleSignOut = async () => {
     try {
       await signOut(auth);
+      router.push("/login");
     } catch (error) {
       console.error("Error signing out", error);
     }
@@ -41,12 +43,14 @@ export default function Navbar() {
           >
             How it works?
           </Link>
+
           <Link
             href="/"
             className="hover:text-quiz-light-gray transition duration-200"
           >
             Features
           </Link>
+
           <Link
             href="/"
             className="hover:text-quiz-light-gray transition duration-200"
@@ -54,6 +58,7 @@ export default function Navbar() {
             About us
           </Link>
 
+            {/* login/logout button */}
           {user ? (
             <Button
               variant="secondary"
@@ -92,7 +97,7 @@ export default function Navbar() {
             About us
           </Link>
 
-          {/* button part*/}
+          {/* login/logout button part*/}
           <div>
             {user ? (
               <Button

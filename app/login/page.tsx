@@ -73,7 +73,7 @@ export default function Page() {
     <div className="min-h-screen w-full mx-auto md:grid grid-cols-2">
 
       {/* text child div */}
-      <div className="p-7 flex flex-col gap-10">
+      <div className="p-5 sm:p-7 flex flex-col gap-6 sm:gap-10">
 
         {/* logo */}
         <div className="mx-auto">
@@ -85,7 +85,7 @@ export default function Page() {
           />
         </div>
 
-        {/* text part */}
+        {/* account creation part */}
         <p className="text-quiz-dark-gray text-center">
           {isSignupMode ? (
             <>
@@ -103,14 +103,14 @@ export default function Page() {
         {/* form */}
         <form onSubmit={handleSubmit}>
 
-          {/* NAME (Signup only) */}
+          {/* NAME (Signup part) */}
           {isSignupMode && (
             <div className="mb-6">
               <Input
                 type="text"
                 value={name}
-                placeholder="John Doe"
-                label="Full Name"
+                placeholder="Adunade"
+                label="User Name"
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   setName(e.target.value);
                   setErrors((prev) => ({ ...prev, name: undefined }));
@@ -122,12 +122,12 @@ export default function Page() {
             </div>
           )}
 
-          {/* EMAIL */}
+          {/* email (login part)*/}
           <div>
             <Input
               type="email"
               value={email}
-              placeholder="hakeem@gmail.com"
+              placeholder="adunade@gmail.com"
               label="Email address"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setEmail(e.target.value);
@@ -142,9 +142,8 @@ export default function Page() {
             )}
           </div>
 
-          {/* PASSWORD */}
+          {/* PASSWORD PART */}
           <div className="relative mt-4">
-
             <Input
               type={showPassword ? "text" : "password"}
               value={password}
@@ -156,7 +155,7 @@ export default function Page() {
               }}
             />
 
-            {/* toggle icon */}
+            {/* toggle eyeon/eyeoff icon */}
             <div
               onClick={() => setShowPassword((prev) => !prev)}
               className="absolute right-3 top-6 cursor-pointer "
@@ -171,31 +170,22 @@ export default function Page() {
             )}
           </div>
 
-          {/* remember + forgot */}
-          <div className="flex items-end justify-between gap-8 mt-5 text-quiz-dark-gray">
-
+          {/* remember me part */}
             <div className="flex gap-2">
               <input type="checkbox" />
               <p className="hover:text-quiz-yellow/60 transition duration-300 hover:underline cursor-pointer">
                 Remember me ?
               </p>
             </div>
-
-            <p className="hover:text-quiz-yellow/60 transition duration-300 hover:underline cursor-pointer">
-              Forgot Password ?
-            </p>
-
-          </div>
-
+                {/* errors part */}
           {errors.general && (
             <div className="mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-md">
               {errors.general}
             </div>
           )}
 
-          {/* buttons */}
+          {/* signup/login buttons */}
           <div className="flex gap-12 mt-10">
-
             <Button type="submit" variant="primary" isLoading={isLoading}>
               {isSignupMode ? "Sign Up" : "Login"}
             </Button>
@@ -211,15 +201,12 @@ export default function Page() {
             >
               {isSignupMode ? "Login" : "Sign Up"}
             </Button>
-
           </div>
-
         </form>
       </div>
 
       {/* image child div */}
       <div className="items-center justify-center p-15 hidden md:grid w-full bg-miniground">
-
         <Image
           src="/svgs/Graduationcap.svg"
           alt="graduationcap image"
@@ -227,7 +214,6 @@ export default function Page() {
           height={300}
         />
       </div>
-
     </div>
   );
 }

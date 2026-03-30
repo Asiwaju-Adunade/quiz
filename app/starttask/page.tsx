@@ -41,18 +41,19 @@ export default function Page({ onClose }: PageProps) {
   };
 
   return (
-    <div className="relative px-10 mx-auto">
+    <div className="relative px-4 sm:px-10 mx-auto">
 
-      <div className="mt-8">
-        <h1 className="font-bold text-5xl text-center mb-5 ">
+         {/* text part */}
+      <div className="mt-6 sm:mt-8">
+        <h1 className="font-bold text-2xl sm:text-4xl md:text-5xl text-center mb-3 sm:mb-5">
            Choose your favorite topic
         </h1>
-        <p className="text-quiz-dark-gray text-center mb-10 text-lg">
+        <p className="text-quiz-dark-gray text-center mb-6 sm:mb-10 text-base sm:text-lg">
           Select more than 5 topics to start quiz ({selectedTopics.length}{" "}
           selected)
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-5">
           {ALL_TOPICS.map((topic) => {
             const isSelected = selectedTopics.includes(topic);
 
@@ -66,6 +67,8 @@ export default function Page({ onClose }: PageProps) {
                   if (!isSelected) toggleTopic(topic);
                 }}
               >
+
+                {/* subject button part */}
                 {/* Left Side (Topic Label) */}
                 <div
                   className={`flex flex-col items-center justify-center py-[10px] px-[25px] ${isSelected ? "w-[80%]" : "w-full"}`}
@@ -99,7 +102,6 @@ export default function Page({ onClose }: PageProps) {
       </div>
 
       <div className="flex justify-end my-15">
-
         {/* start quiz button  */}
         <Button
              variant="primary"

@@ -18,7 +18,7 @@ export default function UserDashboard({
 
   // Unwrap the params Promise (Next.js 15 recommendation)
   const resolvedParams = use(params);
-
+  
   useEffect(() => {
     if (!loading && !user) {
       router.push("/login"); // enforce authentication
@@ -49,24 +49,25 @@ export default function UserDashboard({
   return (
     <>
       <Navbar />
-      <main className="mx-auto max-w-4xl p-10 mt-10">
-        <h1 className="text-3xl font-bold mb-4">
+      <main className="mx-auto max-w-4xl px-4 sm:px-10 py-6 sm:py-10 mt-4 sm:mt-10">
+        <h1 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">
           Welcome, {user.displayName || user.email?.split("@")[0]}
         </h1>
-        <h1 className="text-quiz-dark-gray">
+        <p className="text-quiz-dark-gray text-sm sm:text-base">
           This is your dashboard. Click on the choose subject button to choose
           your subjects and start your quiz.
-        </h1>
+        </p>
 
-        {/* Further content can go here */}
-        <div className="mt-8 p-6 bg-quiz-light-gray rounded-lg shadow-sm md:flex justify-between">
+        <div className="mt-6 sm:mt-8 p-4 sm:p-6 bg-quiz-light-gray rounded-lg shadow-sm flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
           <div>
-            <h2 className="text-xl font-semibold mb-2">Your Quizzes</h2>
-            <p className="text-quiz-dark-gray mb-3 ">
+            <h2 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2">Your Quizzes</h2>
+            <p className="text-quiz-dark-gray text-sm sm:text-base">
               You haven't chosen any subject or started any quizzes yet.
             </p>
           </div>
           <div className="flex items-center">
+
+            {/* choose subject button */}
             <Button 
                variant="primary"
                onClick={() => setShowStartTask(true)}

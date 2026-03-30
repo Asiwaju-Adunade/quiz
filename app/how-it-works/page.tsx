@@ -1,17 +1,79 @@
+
+"use client";
 import Navbar from "@/components/ui/navbar";
+
 export default function Page() {
-    return (
+  return (
     <>
-    <Navbar />
-        <div className=" ml-10 max-w-5xl p-10 space-y-5">
-            <h1 className="font-bold text-3xl mt-5 text-center text-quiz-yellow">How it works</h1>
-            <h1 className="text-quiz-dark-gray text-center text-xl">Learn how our quiz platform works</h1>
-            <h1 className=" text-lg"> You click on the start sloving button or the login button to login or signup.</h1>
-            <h1 className=" text-lg"> After which it will take you to a page where you input your email and password. </h1>
-            <h1 className=" text-lg"> If you are a new user you click on the sign up button, and you will be requested to input your name, email and password.</h1>
-            <h1 className=" text-lg"> But if you are an existing user you click on the login button, then you input your email address and password. </h1>
-            <h1 className=" text-lg"> After which it will take you to a page where you can start your quiz. Then you click on the choose subject button, after clicking on the choose subject button, you are to select the subjects you want to take your quiz on then click on start quiz button to start your quiz. </h1>
+      <Navbar />
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-10 py-6 sm:py-10 space-y-6">
+        
+        {/* Title */}
+        <h1 className="font-bold text-2xl sm:text-3xl mt-3 sm:mt-5 text-center text-quiz-yellow">
+          How It Works
+        </h1>
+
+        <p className="text-quiz-dark-gray text-center text-base sm:text-lg">
+          Learn how our quiz platform works step by step.
+        </p>
+
+        {/* Steps */}
+        <div className="space-y-4 text-sm sm:text-lg text-gray-800">
+
+          <p>
+            1. Click on the <span className="font-semibold">“Start Solving”</span> or{" "}
+            <span className="font-semibold">“Login”</span> button to begin.
+          </p>
+
+          <p>
+            2. You will be taken to a page where you can enter your{" "}
+            <span className="font-semibold">email</span> and{" "}
+            <span className="font-semibold">password</span>.
+          </p>
+
+          <p>
+            3. If you are a new user, click on{" "}
+            <span className="font-semibold">“Sign Up”</span> and provide your{" "}
+            username, email, and password.
+          </p>
+
+          <p>
+            4. If you already have an account, simply log in using your email and
+            password.
+          </p>
+
+          <p>
+            5. After logging in, you will be redirected to the quiz dashboard.
+            Click on{" "}
+            <span className="font-semibold">“Choose Subject”</span>, select your
+            preferred topics, and then click{" "}
+            <span className="font-semibold">“Start Quiz”</span>.
+          </p>
+
+          <p>
+            6. You will see quiz questions with multiple-choice options. Select
+            the option you believe is correct. You have 30 seconds to answer each question.
+          </p>
+
+          <p>
+            7. Use the navigation buttons:
+            <br />
+            • <span className="font-semibold">Previous</span> — go back to the previous question
+            <br />
+            • <span className="font-semibold">Skip</span> — skip a question if you’re unsure and did not know the answer
+            <br />
+            • <span className="font-semibold">Next</span> — move to the next question after selecting an answer
+            <br />
+            • <span className="font-semibold">Submit</span> — finish the quiz and view your score
+          </p>
+
+          <p>
+            8. Once you submit, your score will be displayed at the end of the quiz.
+          </p>
+
         </div>
+      </div>
     </>
-    );
+  );
 }
