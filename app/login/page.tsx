@@ -170,20 +170,6 @@ export default function Page() {
             )}
           </div>
 
-          {/* remember me part */}
-            <div className="flex  mt-5 gap-2">
-              <input type="checkbox" />
-              <p className="hover:text-quiz-yellow/60 transition duration-300 hover:underline cursor-pointer">
-                Remember me ?
-              </p>
-            </div>
-                {/* errors part */}
-          {errors.general && (
-            <div className="mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-md">
-              {errors.general}
-            </div>
-          )}
-
           {/* signup/login buttons */}
           <div className="flex gap-12 mt-10">
             <Button type="submit" variant="primary" isLoading={isLoading}>
