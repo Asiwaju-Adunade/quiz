@@ -76,7 +76,7 @@ export default function Page() {
       <div className="p-5 sm:p-7 flex flex-col gap-6 sm:gap-10">
 
         {/* logo */}
-        <div className="mx-auto">
+        <div className="mx-auto mt-10">
           <Image
             src="/svgs/logo.svg"
             alt="logo"
