@@ -26,7 +26,7 @@ export default function AboutUsPage() {
 
       <main className="max-w-4xl mx-auto px-5 py-14 space-y-14">
         <section className="text-center max-w-2xl mx-auto space-y-5">
-          <h1 className="text-3xl sm:text-5xl font-bold text-gray-900 leading-tight">
+          <h1 className="text-3xl sm:text-5xl font-bold text-quiz-yellow leading-tight">
             Building smarter learners, one quiz at a time
           </h1>
           <p className="text-quiz-dark-gray leading-relaxed">
