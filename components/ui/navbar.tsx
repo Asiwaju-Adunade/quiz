@@ -45,7 +45,7 @@ export default function Navbar() {
           </Link>
 
           <Link
-            href="/"
+            href="/features"
             className="hover:text-quiz-light-gray transition duration-200"
           >
             Features
@@ -84,7 +84,7 @@ export default function Navbar() {
           </Link>
 
           <Link
-            href="/"
+            href="/features"
             className="hover:text-quiz-light-gray transition duration-200"
           >
             Features

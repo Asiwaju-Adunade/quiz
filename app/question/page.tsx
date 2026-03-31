@@ -258,7 +258,7 @@
 //               <button
 //                 key={key}
 //                 onClick={() => handleOptionSelect(key)}
-//                 className={`relative text-left cursor-pointer py-5 px-5 font-bold text-3xl flex justify-between  items-center 
+//                 className={`relative text-left cursor-pointer py-5 px-5 font-bold text-3xl flex justify-between  items-center
 //                   ${isSelected
 //                     ? " bg-quiz-yellow text-white"
 //                     : " bg-quiz-dark-gray text-black"
@@ -266,7 +266,7 @@
 //               >
 //                 {/* Option letter — top-left corner, small square badge */}
 //                 <span
-//                   className={`absolute top-2 left-2 flex items-center justify-center text-sm font-bold 
+//                   className={`absolute top-2 left-2 flex items-center justify-center text-sm font-bold
 //                     ${isSelected ? " text-white" : "text-black"}`}
 //                 >
 //                   {key}
@@ -353,11 +353,10 @@
 //                 <span className="text-9xl font-bold text-white">
 //                   {score}
 //                 </span>
-                
+
 //               </div>
 //             </div>
 
-            
 //             {/* complete button part */}
 //             <div className="flex justify-end">
 //                 <Button
@@ -372,10 +371,6 @@
 //     </div>
 //   );
 // }
-
-
-
-
 
 "use client";
 import { useEffect, useState, useRef, useCallback } from "react";
@@ -438,10 +433,16 @@ function mapApiQuestion(raw: TriviaApiQuestion, topic: string): Question {
   ]);
   const keys = ["A", "B", "C", "D"] as const;
   const options = Object.fromEntries(
-    keys.map((k, i) => [k, allOptions[i] ?? "—"])
+    keys.map((k, i) => [k, allOptions[i] ?? "—"]),
   ) as { A: string; B: string; C: string; D: string };
   const correctKey = keys[allOptions.indexOf(raw.correctAnswer)] ?? "A";
-  return { id: raw.id, topic, text: raw.question.text, options, answer: correctKey };
+  return {
+    id: raw.id,
+    topic,
+    text: raw.question.text,
+    options,
+    answer: correctKey,
+  };
 }
 
 async function fetchQuestionsForTopics(topics: string[]): Promise<Question[]> {
@@ -476,8 +477,12 @@ export default function Page() {
   const questionsRef = useRef<Question[]>([]);
   const answersRef = useRef<Record<number, string | null>>({});
 
-  useEffect(() => { questionsRef.current = questions; }, [questions]);
-  useEffect(() => { answersRef.current = answers; }, [answers]);
+  useEffect(() => {
+    questionsRef.current = questions;
+  }, [questions]);
+  useEffect(() => {
+    answersRef.current = answers;
+  }, [answers]);
 
   const handleFinish = useCallback(() => {
     if (timerRef.current) clearTimeout(timerRef.current);
@@ -491,10 +496,16 @@ export default function Page() {
 
   useEffect(() => {
     const storedTopics = localStorage.getItem("selectedTopics");
-    if (!storedTopics) { router.push("/starttask"); return; }
+    if (!storedTopics) {
+      router.push("/starttask");
+      return;
+    }
 
     const topics: string[] = JSON.parse(storedTopics);
-    if (topics.length < 5) { router.push("/starttask"); return; }
+    if (topics.length < 5) {
+      router.push("/starttask");
+      return;
+    }
 
     fetchQuestionsForTopics(topics)
       .then((qs) => {
@@ -510,13 +521,18 @@ export default function Page() {
 
   useEffect(() => {
     if (timeLeft === null || isFinished) return;
-    if (timeLeft <= 0) { handleFinish(); return; }
+    if (timeLeft <= 0) {
+      handleFinish();
+      return;
+    }
 
     timerRef.current = setTimeout(() => {
       setTimeLeft((prev) => (prev !== null ? prev - 1 : null));
     }, 1000);
 
-    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
   }, [timeLeft, isFinished, handleFinish]);
 
   const handleOptionSelect = (option: string) =>
@@ -553,12 +569,11 @@ export default function Page() {
   const currentQuestion = questions[currentIndex];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen ">
       <Navbar />
 
-      <div className="max-w-4xl mx-auto px-3 sm:px-5 py-6 sm:py-10">
-
-        {/* ✅ STEPPER (RESTORED) */}
+      <div className="max-w-6xl mx-auto px-3 sm:px-5 py-6 sm:py-10">
+        {/* STEPPER PART */}
         <div className="flex justify-center flex-wrap mx-auto mb-6 sm:mb-8 gap-0">
           {questions.map((_, idx) => (
             <div key={idx} className="flex items-center">
@@ -568,8 +583,8 @@ export default function Page() {
                   idx === currentIndex
                     ? "bg-quiz-yellow text-black border-quiz-yellow"
                     : idx < currentIndex
-                    ? "bg-quiz-yellow text-black border-quiz-yellow"
-                    : "border-quiz-light-gray text-quiz-dark-gray"
+                      ? "bg-quiz-yellow text-black border-quiz-yellow"
+                      : "border-quiz-light-gray text-quiz-dark-gray"
                 }`}
               >
                 {idx + 1}
@@ -581,14 +596,14 @@ export default function Page() {
           ))}
         </div>
 
-        {/* ✅ QUESTION */}
-        <div className="bg-quiz-yellow p-5 sm:p-6 mb-6 sm:mb-8 text-center">
-          <h2 className="text-lg sm:text-2xl font-bold text-white leading-snug">
+        {/* QUESTION PART */}
+        <div className="bg-quiz-yellow p-10  h-30 sm:p-6 mb-6 sm:mb-8 flex items-center justify-center">
+          <h2 className="text-lg sm:text-2xl font-bold  text-white leading-snug">
             {currentQuestion.text}
           </h2>
         </div>
 
-        {/* ✅ OPTIONS */}
+        {/* ✅ OPTIONS PART */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 my-6 sm:my-10 mb-10 sm:mb-15 max-w-2xl mx-auto w-full">
           {(["A", "B", "C", "D"] as const).map((key) => {
             const isSelected = answers[currentIndex] === key;
@@ -597,19 +612,19 @@ export default function Page() {
                 key={key}
                 onClick={() => handleOptionSelect(key)}
                 className={`p-4 sm:p-5 transition-colors duration-200 flex items-center gap-3
-                  ${
-                    isSelected
-                      ? "bg-quiz-yellow"
-                      : "bg-quiz-light-gray"
-                  }`}
+                  ${isSelected ? "bg-quiz-yellow" : "bg-quiz-light-gray"}`}
               >
                 {/* LETTER with full stop */}
-                <span className={`text-base sm:text-xl font-bold shrink-0 ${isSelected ? "text-white" : "text-black"}`}>
+                <span
+                  className={`text-base sm:text-xl font-bold shrink-0 ${isSelected ? "text-white" : "text-black"}`}
+                >
                   {key}.
                 </span>
 
                 {/*options text - centered */}
-                <span className={`text-base sm:text-xl font-bold flex-1 text-center ${isSelected ? "text-white" : "text-black"}`}>
+                <span
+                  className={`text-base sm:text-xl font-bold flex-1 text-center ${isSelected ? "text-white" : "text-black"}`}
+                >
                   {currentQuestion.options[key]}
                 </span>
               </button>
@@ -618,49 +633,67 @@ export default function Page() {
         </div>
 
         {/* ✅ BUTTONS + TIMER */}
-        <div className="flex flex-wrap justify-between items-center gap-3 mt-6 sm:mt-10">
-
+        <div className="flex mx-auto justify-around items-center p-3 max-w-3xl gap-5 mt-6 sm:mt-10">
           {/* previous button part */}
-          <Button
-             label="← Prev"
-             onClick={handlePrevious}
-             disabled={currentIndex === 0}
-             style={{ background: "#D9D9D9", color: "black" }}
-             className="text-sm! sm:text-base! px-4! sm:px-[30px]!"
-          />
-
-          {/* Timer — centred */}
-          <div className="flex items-center gap-2 bg-gray-100 px-3 py-2">
-            {/* timer image */}
-            <Image src="/svgs/Time.svg" 
-               alt="Timer"
-               width={18} 
-               height={18} 
+          <div>
+            <Button
+              label="← Prev"
+              onClick={handlePrevious}
+              disabled={currentIndex === 0}
+              style={{ background: "#D9D9D9", color: "black" }}
+              className="text-sm! sm:text-base! px-4! sm:px-[30px]!"
             />
-            <span className="font-bold text-sm sm:text-base tabular-nums">
+          </div>
+
+          {/* Timer — clock SVG with time overlaid inside */}
+          <div className="relative flex items-center justify-center">
+            {/* clock SVG background */}
+            <Image
+              src="/svgs/Time.svg"
+              width={90}
+              height={70}
+              alt="Timer"
+              className="object-contain"
+            />
+            {/* time text overlaid in center of the clock */}
+            <span
+              className="absolute font-extrabold text-xl text-black "
+              style={{
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+              }}
+            >
               {timeLeft !== null ? formatTime(timeLeft) : "00:00"}
             </span>
           </div>
 
-          <div className="flex gap-2 sm:gap-3">
-            {/* skip button part */}
+          {/* skip button part */}
+          <div>
             <Button
               label="Skip"
               onClick={handleSkip}
-              style={{ background: "white", color: "#FCC822", border: "1px solid #FCC822" }}
+              style={{
+                background: "white",
+                color: "#FCC822",
+                border: "1px solid #FCC822",
+              }}
               className="text-sm! sm:text-base! px-4! sm:px-[30px]!"
             />
+          </div>
 
-            {/* next button part */}
+          {/* next button part */}
+          <div>
             <Button
               variant="primary"
-              label={currentIndex === questions.length - 1 ? "Submit" : "Next →"}
+              label={
+                currentIndex === questions.length - 1 ? "Submit" : "Next →"
+              }
               onClick={handleNext}
               disabled={!answers[currentIndex]}
               className={`text-sm! sm:text-base! px-4! sm:px-[30px]! ${!answers[currentIndex] ? "opacity-40 cursor-not-allowed" : ""}`}
             />
           </div>
-          
         </div>
       </div>
 
@@ -668,7 +701,6 @@ export default function Page() {
       {isFinished && (
         <div className="fixed inset-0 bg-black/50 flex justify-center items-center p-4">
           <div className="bg-white p-5 sm:p-10 max-w-2xl w-full mx-auto">
-
             <div className="relative flex items-center justify-center">
               {/* IMAGE MODAL */}
               <Image
@@ -682,10 +714,10 @@ export default function Page() {
               {/* SCORE INSIDE MODAL */}
               <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
                 <p className="text-xl sm:text-3xl font-bold">Your Score</p>
-                <p className="text-7xl sm:text-9xl font-bold">{score}</p>
+                <p className="text-7xl sm:text-9xl font-extrabold">{score}</p>
               </div>
             </div>
-                
+
             {/* complete button part */}
             <div className="flex justify-end mt-4 sm:mt-6">
               <Button

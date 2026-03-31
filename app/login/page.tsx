@@ -73,10 +73,10 @@ export default function Page() {
     <div className="min-h-screen w-full mx-auto md:grid grid-cols-2">
 
       {/* text child div */}
-      <div className="p-5 sm:p-7 flex flex-col gap-6 sm:gap-10">
+      <div className="p-5 sm:p-8 flex flex-col gap-6 sm:gap-10">
 
         {/* logo */}
-        <div className="mx-auto mt-10">
+        <div className="mx-auto mt-15">
           <Image
             src="/svgs/logo.svg"
             alt="logo"
@@ -151,7 +151,7 @@ export default function Page() {
               placeholder="********"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setPassword(e.target.value);
-                setErrors((prev) => ({ ...prev, password: undefined }));
+                setErrors((prev) => ({ ...prev, password: undefined, general: undefined }));
               }}
             />
 
@@ -169,6 +169,12 @@ export default function Page() {
               </p>
             )}
           </div>
+
+          {errors.general && (
+            <div className="mt-4 p-3 bg-red-50 border border-red-200 text-red-600 text-sm rounded-md">
+              {errors.general}
+            </div>
+          )}
 
           {/* signup/login buttons */}
           <div className="flex gap-12 mt-10">
