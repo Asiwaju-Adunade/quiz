@@ -57,7 +57,7 @@ const features = [
         ),
         title: "Instant Score Results",
         description:
-            "See your performance the moment you finish. A detailed score card appears with your results so you can track how well you're progressing.",
+            "See your performance the moment you finish. A detailed score modal appears with your results so you can track how well you're progressing.",
     },
     {
         icon: (
