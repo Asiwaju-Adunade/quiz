@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto, Poppins } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/ui/navbar";
 import { AuthProvider } from "@/context/auth-context";
 
 const roboto = Roboto({
@@ -17,7 +16,7 @@ const poppins = Poppins({
   
 
 export const metadata: Metadata = {
-  title: "Quiz website",
+  title: "Quiz App",
 };
 
 export default function RootLayout({

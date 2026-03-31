@@ -52,7 +52,7 @@ export default function Navbar() {
           </Link>
 
           <Link
-            href="/"
+            href="/aboutus"
             className="hover:text-quiz-light-gray transition duration-200"
           >
             About us
@@ -91,7 +91,7 @@ export default function Navbar() {
           </Link>
 
           <Link
-            href="/"
+            href="/aboutus"
             className="hover:text-quiz-light-gray transition duration-200"
           >
             About us

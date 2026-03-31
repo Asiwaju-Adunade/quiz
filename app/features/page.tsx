@@ -147,7 +147,7 @@ export default function FeaturesPage() {
                 <span className="text-3xl font-bold text-quiz-yellow mb-10">
                     Why Quiz with Adun
                 </span>
-                <h1 className="text-3xl sm:text-5xl font-bold text-gray-900  my-5">
+                <h1 className="text-3xl font-bold text-gray-900  my-5">
                     Everything you need to{" "}
                     <span className="text-quiz-yellow">ace your exams</span>
                 </h1>
@@ -211,7 +211,7 @@ export default function FeaturesPage() {
                         not harder. It's free, fast, and built for you.
                     </p>
 
-                    <div className="border-2 border-white font-bold text-xl p-5  text-white! hover:bg-yellow-300 duration-300 rounded-full w-fit mx-auto">
+                    <div className="border-2 font-bold text-xl p-5 bg-quiz-light-gray text-black hover:bg-white duration-300 rounded-full w-fit mx-auto">
                         <Link
                             href="/login">Get Started — It's Free
                         </Link>

@@ -650,14 +650,14 @@ export default function Page() {
             {/* clock SVG background */}
             <Image
               src="/svgs/Time.svg"
-              width={90}
+              width={100}
               height={70}
               alt="Timer"
               className="object-contain"
             />
             {/* time text overlaid in center of the clock */}
             <span
-              className="absolute font-extrabold text-xl text-black "
+              className="absolute font-bold text-lg text-black "
               style={{
                 top: "50%",
                 left: "50%",
