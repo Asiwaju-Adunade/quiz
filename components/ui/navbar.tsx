@@ -90,12 +90,12 @@ export default function Navbar() {
             Features
           </Link>
 
-          <Link
+          {/* <Link
             href="/"
             className="hover:text-quiz-light-gray transition duration-200"
           >
             About us
-          </Link>
+          </Link> */}
 
           {/* login/logout button part*/}
           <div>
