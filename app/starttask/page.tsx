@@ -20,6 +20,11 @@ const ALL_TOPICS = [
   "Health Education",
   "Home Economics",
   "Current Affairs",
+  "French",
+  "Technology",
+  "Economics",
+  "Bible Knowledge",
+  "Social Studies",
 ];
 
 interface PageProps {

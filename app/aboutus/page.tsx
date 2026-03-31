@@ -57,7 +57,7 @@ export default function AboutUsPage() {
           <p className="text-quiz-dark-gray max-w-2xl mx-auto leading-relaxed">
             Many students want to practice but struggle to find a simple platform
             that feels like real exam preparation. Quiz with Adun closes that gap
-            with topic-based quizzes, timed sessions,progress-focused
+            with topic based quizzes, timed sessions, progress focused
             learning, and is also free you don’t need to pay any money to use this platform.
           </p>
           <Link
