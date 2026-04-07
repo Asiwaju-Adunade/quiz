@@ -16,28 +16,26 @@ export default function UserDashboard({
   const router = useRouter();
   const [showStartTask, setShowStartTask] = useState(false);
 
-  // Unwrap the params Promise (Next.js 15 recommendation)
   const resolvedParams = use(params);
   
   useEffect(() => {
     if (!loading && !user) {
-      router.push("/login"); // enforce authentication
+      router.push("/login"); 
     }
   }, [user, loading, router]);
 
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        Loading...
+        Loading... 
       </div>
     );
   }
 
   if (!user) {
-    return null; // will redirect in useEffect
+    return null; 
   }
 
-  // Optionally verify that the user ID in the url matches the authenticated user
   if (user.uid !== resolvedParams.userID) {
     return (
       <div className="min-h-screen flex items-center justify-center">

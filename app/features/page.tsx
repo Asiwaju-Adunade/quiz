@@ -142,7 +142,7 @@ export default function FeaturesPage() {
     <div className="min-h-screen">
       <Navbar />
       {/* Hero Section*/}
-      <section className="max-w-4xl mx-auto pt-16 pb-10 text-center">
+      <div className="max-w-4xl mx-auto pt-16 pb-10 text-center">
         <span className="text-3xl font-bold text-quiz-yellow mb-10">
           Why Quiz with Adun
         </span>
@@ -154,10 +154,10 @@ export default function FeaturesPage() {
           A smarter way to prepare. Quiz with Adun gives you the tools, topics,
           and timed environment to build real confidence before exam day.
         </p>
-      </section>
+      </div>
 
       {/* Stats Strip */}
-      <section className="max-w-4xl mx-auto px-5 mb-14">
+      <div className="max-w-4xl mx-auto px-5 mb-14">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {stats.map((s) => (
             <div
@@ -173,10 +173,10 @@ export default function FeaturesPage() {
             </div>
           ))}
         </div>
-      </section>
+      </div>
 
       {/* Feature Cards */}
-      <section className="max-w-4xl mx-auto px-5 pb-20">
+      <div className="max-w-4xl mx-auto px-5 pb-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((f) => (
             <div
@@ -197,10 +197,10 @@ export default function FeaturesPage() {
             </div>
           ))}
         </div>
-      </section>
+      </div>
 
       {/* CTA Section */}
-      <section className="bg-quiz-yellow py-16">
+      <div className="bg-quiz-yellow py-16">
         <div className="max-w-2xl mx-auto px-5 text-center">
           <h2 className="text-3xl font-extrabold text-black mb-3">
             Ready to start quizzing?
@@ -214,7 +214,7 @@ export default function FeaturesPage() {
             <Link href="/login">Get Started — It's Free</Link>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

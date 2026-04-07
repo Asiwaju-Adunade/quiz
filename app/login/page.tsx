@@ -178,18 +178,22 @@ export default function Page() {
 
           {/* signup/login buttons */}
           <div className="flex gap-12 mt-10">
-            <Button type="submit" variant="primary" isLoading={isLoading}>
-              {isSignupMode ? "Sign Up" : "Login"}
+            <Button 
+               type="submit" 
+               variant="primary"
+               isLoading={isLoading}
+            >
+               {isSignupMode ? "Sign Up" : "Login"}
             </Button>
 
             <Button 
-              variant="secondary" 
-              type="button" 
-              onClick={() => {
+               variant="secondary" 
+               type="button" 
+               onClick={() => {
                 setIsSignupMode(!isSignupMode);
                 setErrors({});
-              }}
-              disabled={isLoading}
+               }}
+               disabled={isLoading}
             >
               {isSignupMode ? "Login" : "Sign Up"}
             </Button>
